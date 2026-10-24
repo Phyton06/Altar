@@ -1,0 +1,10 @@
+{
+  "name": "altar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check app.js && node --check art.js && node --check select-ui.js && node --check sw.js",
+    "dev": "python3 -m http.server 5173"
+  }
+}

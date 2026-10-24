@@ -1,0 +1,6 @@
+.agents/
+.atl/
+.playwright-mcp/
+node_modules/
+odd/
+skills-lock.json

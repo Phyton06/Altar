@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#291c35" />
+    <meta
+      name="description"
+      content="Un espacio para recordar. Crea y comparte tu altar de Día de Muertos."
+    />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="canonical" href="https://phyton06.github.io/Altar/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Siempre" />
+    <meta
+      property="og:title"
+      content="Siempre · Crea tu altar de Día de Muertos"
+    />
+    <meta
+      property="og:description"
+      content="Recordar también es volver a abrazar. Crea un altar de 3 o 7 niveles, decóralo y guarda una imagen de tu homenaje."
+    />
+    <meta property="og:url" content="https://phyton06.github.io/Altar/" />
+    <meta
+      property="og:image"
+      content="https://phyton06.github.io/Altar/social-preview.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Siempre: un altar ilustrado con cempasúchil y veladoras para celebrar nuestros recuerdos."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Siempre · Crea tu altar de Día de Muertos"
+    />
+    <meta
+      name="twitter:description"
+      content="Un homenaje hecho por ti. Crea, decora y comparte tu altar digital de 3 o 7 niveles."
+    />
+    <meta
+      name="twitter:image"
+      content="https://phyton06.github.io/Altar/social-preview.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Siempre: un altar ilustrado con cempasúchil y veladoras para celebrar nuestros recuerdos."
+    />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Siempre · Altar de recuerdos</title>
+  </head>
+  <body>
+    <header class="masthead">
+      <a href="./" class="brand"
+        >siempre<span>ALTARES QUE GUARDAN HISTORIAS</span></a
+      ><button id="guide" class="quiet">
+        La tradición <span aria-hidden="true">↗</span>
+      </button>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">DÍA DE MUERTOS · UN HOMENAJE HECHO POR TI</p>
+        <h1>Recordar también<br />es <em>volver a abrazar.</em></h1>
+        <p>
+          Crea un altar para quien vive en tu memoria.<br />Una fotografía, una
+          ofrenda y todo tu cariño.
+        </p>
+      </section>
+      <section class="workspace" aria-label="Editor de altar">
+        <aside class="controls">
+          <div class="section-title">
+            <span class="step">01</span>
+            <h2>Tu altar, desde el inicio</h2>
+          </div>
+          <p class="muted">Elige la estructura de tu ofrenda.</p>
+          <fieldset>
+            <legend class="sr-only">Número de niveles</legend>
+            <label class="level-choice"
+              ><input type="radio" name="levels" value="3" checked /><span
+                ><b>3 niveles</b
+                ><small>Cielo, purificación y tierra</small></span
+              ></label
+            ><label class="level-choice"
+              ><input type="radio" name="levels" value="7" /><span
+                ><b>7 niveles</b><small>El camino del alma</small></span
+              ></label
+            >
+          </fieldset>
+          <label class="upload" for="photo"
+            ><span aria-hidden="true">＋</span><b>Agregar su fotografía</b
+            ><small>JPG, PNG o WebP · hasta 15 MB</small></label
+          ><input
+            id="photo"
+            class="sr-only"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+          />
+          <p class="privacy">La foto se queda en este dispositivo.</p>
+          <div class="section-title divider">
+            <span class="step">02</span>
+            <h2>Ofrendas con significado</h2>
+          </div>
+          <label class="field-label" for="tier">Estás decorando</label
+          ><select id="tier"></select>
+          <section class="level-meaning" aria-live="polite" aria-atomic="true">
+            <p class="eyebrow">EL SIGNIFICADO DE ESTE NIVEL</p>
+            <h3 id="meaning-title"></h3>
+            <p id="meaning"></p>
+            <small
+              >Según la variante elegida. Las tradiciones pueden cambiar entre
+              familias y regiones.</small
+            >
+          </section>
+          <div id="catalog" class="catalog"></div>
+        </aside>
+        <div class="preview">
+          <div class="preview-heading">
+            <span class="eyebrow">TU ESPACIO DE MEMORIA</span
+            ><span id="save-state" role="status">Guardado local</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas
+              id="altar"
+              width="1000"
+              height="1100"
+              tabindex="0"
+              aria-label="Altar editable. Añade objetos desde el catálogo y usa la lista inferior para seleccionarlos. Las flechas mueven el objeto seleccionado."
+            ></canvas>
+          </div>
+          <p class="hint">
+            Arrastra cada ofrenda dentro de su nivel. También puedes usar las
+            flechas del teclado.
+          </p>
+          <div class="object-tools">
+            <label for="objects">Objeto</label
+            ><select id="objects">
+              <option value="">Ninguno seleccionado</option></select
+            ><button id="remove" class="quiet" disabled>Quitar</button>
+          </div>
+          <div class="finish">
+            <button id="download" class="primary">
+              Descargar mi altar <span aria-hidden="true">↓</span></button
+            ><button id="share" class="secondary">Compartir</button>
+          </div>
+          <button id="reset" class="reset">Empezar de nuevo</button>
+        </div>
+      </section>
+      <p id="message" role="status" class="message"></p>
+    </main>
+    <footer>
+      <span class="brand">siempre</span>
+      <p>Hecho para celebrar la vida y mantener cerca los recuerdos.</p>
+      <span>SOLO EN TU DISPOSITIVO</span>
+    </footer>
+    <dialog id="guide-dialog">
+      <button class="quiet close" id="close-guide">Cerrar ×</button>
+      <p class="eyebrow">UNA TRADICIÓN, MUCHAS FORMAS</p>
+      <h2>Cada ofrenda cuenta algo.</h2>
+      <p>
+        No existe una única distribución para todos los altares. Seguimos una
+        variante documentada por el Tecnológico de Monterrey; las costumbres
+        cambian entre regiones y familias.
+      </p>
+      <h3>Tres niveles · de abajo hacia arriba</h3>
+      <p>
+        Tierra: retrato y alimentos. Purificación: sal, velas y copal. Cielo:
+        figuras religiosas y cruces. La colocación del retrato en tierra es una
+        adaptación del editor al homenaje personal.
+      </p>
+      <h3>Siete niveles · de arriba hacia abajo</h3>
+      <p>
+        Imagen religiosa, oración, sal, pan de muerto, alimentos, retrato y
+        cruz. Los números del editor siempre se leen de arriba hacia abajo.
+      </p>
+      <p>
+        Flores y papel picado se permiten en todos los niveles como decoración
+        general; no representan una regla exclusiva de la tradición.
+      </p>
+      <p>
+        <a
+          href="https://conecta.tec.mx/es/noticias/aguascalientes/arte-y-cultura/guia-para-entender-los-niveles-y-simbolos-del-altar-de"
+          target="_blank"
+          rel="noopener"
+          >Consultar la guía del Tec</a
+        >
+        ·
+        <a
+          href="https://www.gob.mx/inpi/articulos/conoces-el-significado-de-los-elementos-de-una-ofrenda-de-dia-de-muertos"
+          target="_blank"
+          rel="noopener"
+          >Significados: INPI</a
+        >
+      </p>
+      <p>
+        El navegador conserva tu avance, pero puede borrarlo si limpias sus
+        datos. Descarga tu imagen para conservarla. Compartir y la instalación
+        dependen del navegador; si no están disponibles, descarga el PNG.
+      </p>
+    </dialog>
+    <dialog
+      id="reset-dialog"
+      class="reset-dialog"
+      role="alertdialog"
+      aria-labelledby="reset-title"
+      aria-describedby="reset-description"
+    >
+      <div class="reset-emblem" aria-hidden="true">
+        <img src="./icon.svg" alt="" width="52" height="52" />
+      </div>
+      <p class="eyebrow">UN NUEVO COMIENZO</p>
+      <h2 id="reset-title">¿Empezar un nuevo altar?</h2>
+      <p id="reset-description">
+        Se borrarán las ofrendas y la fotografía guardadas en este dispositivo.
+        Esta acción no se puede deshacer.
+      </p>
+      <p class="reset-reminder">
+        Si quieres conservar tu homenaje, cancela y descarga primero su imagen.
+      </p>
+      <form method="dialog" class="reset-actions">
+        <button id="confirm-reset" type="button" class="danger">
+          Sí, empezar de nuevo
+        </button>
+        <button class="primary" value="cancel" autofocus>
+          Conservar mi altar
+        </button>
+      </form>
+    </dialog>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
